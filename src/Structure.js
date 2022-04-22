@@ -10,6 +10,7 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         this.speed=100;
         //this.classType= Phaser.GameObjects.Rectangle;
         this.generateStructure();
+        
     }
 
 
