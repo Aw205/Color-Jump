@@ -7,7 +7,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setGravityY(400);
         this.scene.input.on("pointerdown",this.jump,this);
         this.setScale(.05);
-        
     }
 
     jump(){

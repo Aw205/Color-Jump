@@ -14,5 +14,6 @@ let config = {
         default:'arcade',
         arcade:{debug:true}
     }
+    
 }
 let game = new Phaser.Game(config);

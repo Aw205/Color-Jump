@@ -9,7 +9,7 @@ class ColorPicker {
         this.timedEvent = this.scene.time.addEvent({delay: 1000, callback: this.onEvent, callbackScope: this});
 
     }
-
+    
     onEvent(){
 
         let currentColor = Phaser.Math.Between(0,2);
