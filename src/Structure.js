@@ -2,7 +2,6 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
 
     constructor(world,scene){
 
-       
         super(world,scene);
         this.scene.add.existing(this);
         this.x = config.width;
