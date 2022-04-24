@@ -52,7 +52,7 @@ class game_screen extends Phaser.Scene{
     }
 
     spawnObstacle(){
-        this.timedEvent=this.time.addEvent({delay: 1000, callback: this.onEvent, callbackScope: this});
+        this.timedEvent=this.time.addEvent({delay:0, callback: this.onEvent, callbackScope: this});
     }
 
     onEvent(){

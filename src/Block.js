@@ -15,9 +15,10 @@ class Block extends Phaser.Physics.Arcade.Sprite{
     }
 
 
-
-
-
-
-
+    preUpdate(time,delta){
+        
+        if(this.x<-100){
+            this.destroy(true);
+        }
+    }
 }

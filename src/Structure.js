@@ -5,11 +5,10 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         super(world,scene);
         this.scene.add.existing(this);
         this.x = config.width;
-       // this.y = config.height/2;
         this.speed=150;
         this.types = ["red","blue","green"];
 
-        this.y = Phaser.Math.Between(0,config.height);
+        this.y = Phaser.Math.Between(75,config.height);
 
         this.generateStructure();   
         
@@ -36,14 +35,6 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
 
         let increment = delta/1000 * this.speed;
         this.incX(-increment);
-
-        /*this.getChildren().forEach(square => {
-
-            square -= delta/1000 * this.speed;
-            if(this.x < -300){
-                this.destroy(true,true);
-             }
-        });*/
     }
 
 }
