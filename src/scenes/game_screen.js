@@ -30,11 +30,11 @@ class game_screen extends Phaser.Scene{
 
 
         let line= new Phaser.GameObjects.Line(this);
-        line.setTo(0,config.height/2,100,config.height/2);
+        line.setTo(0,config.height/2,175,config.height/2);
         line.setStrokeStyle(5,Phaser.Display.Color.GetColor(255,0,0));
         line.setOrigin(0,-1);
         line.height=config.height/2;
-        line.width=100;
+        line.width=175;
         this.physics.add.existing(line,true);
         this.add.existing(line);
        
@@ -51,11 +51,11 @@ class game_screen extends Phaser.Scene{
     }
 
     createPlayer(){
-        return new Player(this,50,config.height/2 - 100,'player');
+        return new Player(this,150,config.height/2 - 100,'player');
     }
 
     spawnObstacle(){
-        this.timedEvent=this.time.addEvent({delay:0, callback: this.onEvent, callbackScope: this});
+        this.timedEvent=this.time.addEvent({delay:1000, callback: this.onEvent, callbackScope: this});
     }
 
     onEvent(){

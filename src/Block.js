@@ -11,12 +11,13 @@ class Block extends Phaser.Physics.Arcade.Sprite{
         this.setOrigin(0,1);
         this.scene.physics.add.existing(this);
         this.setImmovable(true);
-       // this.setVelocityX(-50);
+        this.setFrictionX(0);
+        this.setVelocityX(-130);
     }
 
 
     preUpdate(time,delta){
-        
+
         if(this.x<-100){
             this.destroy(true);
         }
