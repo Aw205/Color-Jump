@@ -4,14 +4,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         super(scene,x,y,texture);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.setGravityY(450);
+        this.setGravityY(800);
         this.scene.input.on("pointerdown",this.jump,this);
         this.setScale(25/this.width,25/this.height);
         
     }
 
     jump(){
-        this.setVelocityY(-200);
+        this.setVelocityY(-350);
     }
 
 }
