@@ -19,7 +19,6 @@ class ColorPicker {
         this.prevColorIndex=currentColor;
         this.scene.cameras.main.setBackgroundColor(this.colors[currentColor]);
         this.timedEvent.reset({delay: Phaser.Math.Between(2,7)*1000, callback: this.onEvent, callbackScope: this, repeat: 1});
-
     }
 
 }
