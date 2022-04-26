@@ -8,6 +8,12 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         this.speed=150;
         this.types = ["red","blue","green"];
 
+        this.array = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ];
+
         this.y = Phaser.Math.Between(75,config.height);
         this.generateStructure();   
         
@@ -19,11 +25,13 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         let generatedSquares = new Set();
         let interval = [Phaser.Math.Between(50,config.height/2),Phaser.Math.Between(config.height/2+50,config.height)];
         let num = Phaser.Math.Between(0,8);
+       
 
         for(var i = 0; i< interval.length;i++){
             this.y = interval[i];
+            let currentColor = Phaser.Math.Between(0,2);
             while(!generatedSquares.has(num)){ 
-                let currentColor = Phaser.Math.Between(0,2);
+                //let currentColor = Phaser.Math.Between(0,2);
                 generatedSquares.add(num);
                 let row = Math.floor(num/3);
                 let col = num %3;
@@ -35,6 +43,29 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         }
         
     }
+
+    isInBounds(){
+
+    }
+
+    assignBlockType(){
+
+        let currentColor = Phaser.Math.Between(0,2);
+
+        for(var row = 0; row< this.array.length;row++){
+            for(var col = 0; col < this.array.length;col++){
+                if(row!=0 && this.array[row-1][j]==0){ //checking if tile above current is empty
+                    
+                }
+                else {
+
+                }
+
+            }
+        }
+
+    }
+
 
     preUpdate(time,delta){
 

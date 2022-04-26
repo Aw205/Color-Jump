@@ -13,8 +13,8 @@ class Block extends Phaser.Physics.Arcade.Sprite{
         this.setImmovable(true);
         this.setFrictionX(0);
         this.setVelocityX(-130);
-    }
 
+    }
 
     preUpdate(time,delta){
 
@@ -22,4 +22,6 @@ class Block extends Phaser.Physics.Arcade.Sprite{
             this.destroy(true);
         }
     }
+    
+
 }

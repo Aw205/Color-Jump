@@ -6,19 +6,18 @@ class game_screen extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("mountain_bg","./assets/layers/parallax-mountain-bg.png");
-        this.load.image("mountains","./assets/layers/parallax-mountain-mountains.png");
         this.load.image("player","./assets/ball.png");
-        this.load.image("ice","./assets/icleblock.svg");
+        this.load.image("ice","./assets/ice.svg");
         this.load.image("red","./assets/red.png");
         this.load.image("blue","./assets/blue.png");
         this.load.image("green","./assets/green.png");
+        this.load.image("background","./assets/background.png");
         
     }
 
     create(){
 
-       // this.background = new Background();
+        this.background = new Background();
         this.floor = this.createFloor();
         this.player = this.createPlayer();
         this.physics.add.collider(this.floor,this.player);
@@ -30,11 +29,11 @@ class game_screen extends Phaser.Scene{
 
 
         let line= new Phaser.GameObjects.Line(this);
-        line.setTo(0,config.height/2,175,config.height/2);
+        line.setTo(0,config.height/2,200,config.height/2);
         line.setStrokeStyle(5,Phaser.Display.Color.GetColor(255,0,0));
         line.setOrigin(0,-1);
         line.height=config.height/2;
-        line.width=175;
+        line.width=200;
         this.physics.add.existing(line,true);
         this.add.existing(line);
        
@@ -51,7 +50,7 @@ class game_screen extends Phaser.Scene{
     }
 
     createPlayer(){
-        return new Player(this,150,config.height/2 - 100,'player');
+        return new Player(this,200,config.height/2 - 100,'player');
     }
 
     spawnObstacle(){

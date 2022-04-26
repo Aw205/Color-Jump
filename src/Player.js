@@ -10,6 +10,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         
     }
 
+    preUpdate(){
+
+        this.setVelocityX(0); // in case player has been pushed by block
+    }
+
     jump(){
         this.setVelocityY(-350);
     }

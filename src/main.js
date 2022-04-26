@@ -12,8 +12,10 @@ let config = {
     scene: [game_screen],
     physics:{
         default:'arcade',
-        arcade:{debug:true}
-    }
+       // arcade:{debug:true}
+    },
+    pixelArt: true,
+    zoom : 1
     
 }
 let game = new Phaser.Game(config);
