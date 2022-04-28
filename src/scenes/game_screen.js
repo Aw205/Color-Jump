@@ -7,15 +7,20 @@ class game_screen extends Phaser.Scene{
 
     preload(){
         this.load.image("player","./assets/ball.png");
+        this.load.image("block","./assets/block.png");
         this.load.image("ice","./assets/ice.svg");
         this.load.image("red","./assets/red.png");
         this.load.image("blue","./assets/blue.png");
         this.load.image("green","./assets/green.png");
         this.load.image("background","./assets/background.png");
+        this.load.audio("music","./assets/game_music.ogg");
         
     }
 
     create(){
+
+        this.sound.add("music");
+        this.sound.play("music",{loop: true});
 
         this.background = new Background();
         this.floor = this.createFloor();
@@ -23,6 +28,8 @@ class game_screen extends Phaser.Scene{
         this.physics.add.collider(this.floor,this.player);
         this.spawnObstacle();
         this.colorPicker = new ColorPicker();
+
+       
     }
 
     createFloor(){
@@ -45,8 +52,6 @@ class game_screen extends Phaser.Scene{
         this.floor.x-=delta/1000 * 15;
         this.floor.body.x-=delta/1000 * 15;
     
-        //this.background.update();
-
     }
 
     createPlayer(){

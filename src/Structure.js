@@ -3,19 +3,14 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
     constructor(world,scene){
 
         super(world,scene);
-        this.scene.add.existing(this);
+       
         this.x = config.width;
         this.speed=150;
-        this.types = ["red","blue","green"];
-
-        this.array = [
-            [0,0,0],
-            [0,0,0],
-            [0,0,0]
-        ];
-
+        this.initialTints = [0x960B0B,0x2E7A1E,0x000008B] // red green blue
+        this.finalTints = [0xD12323,0x89DE32,0x0F52BA]
         this.y = Phaser.Math.Between(75,config.height);
         this.generateStructure();   
+        this.scene.add.existing(this);
         
     }
 
@@ -35,37 +30,14 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
                 generatedSquares.add(num);
                 let row = Math.floor(num/3);
                 let col = num %3;
-                let block = new Block(this.scene,this.x+col*Block.WIDTH,this.y-row*Block.LENGTH,this.types[currentColor]);
-                this.add(block,true);
+                let block = new Block(this.scene,this.x+col*Block.WIDTH,this.y-row*Block.LENGTH,"block",this.initialTints[currentColor],this.finalTints[currentColor],currentColor);    
+                this.add(block,true);                
                 num = Phaser.Math.Between(0,8);
             }
             generatedSquares.clear();
         }
         
     }
-
-    isInBounds(){
-
-    }
-
-    assignBlockType(){
-
-        let currentColor = Phaser.Math.Between(0,2);
-
-        for(var row = 0; row< this.array.length;row++){
-            for(var col = 0; col < this.array.length;col++){
-                if(row!=0 && this.array[row-1][j]==0){ //checking if tile above current is empty
-                    
-                }
-                else {
-
-                }
-
-            }
-        }
-
-    }
-
 
     preUpdate(time,delta){
 

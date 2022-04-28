@@ -6,10 +6,10 @@ Creative Tilt:
 */
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.WEBGL,
     width: 640,
     height: 480,
-    scene: [game_screen],
+    scene: [Menu,Tutorial,game_screen],
     physics:{
         default:'arcade',
        // arcade:{debug:true}
