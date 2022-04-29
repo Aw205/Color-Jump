@@ -1,3 +1,6 @@
+
+var player;
+
 class game_screen extends Phaser.Scene{
 
     constructor(){
@@ -7,11 +10,8 @@ class game_screen extends Phaser.Scene{
 
     preload(){
         this.load.image("player","./assets/ball.png");
+        this.load.image("arrow","./assets/arrow.png");
         this.load.image("block","./assets/block.png");
-        this.load.image("ice","./assets/ice.svg");
-        this.load.image("red","./assets/red.png");
-        this.load.image("blue","./assets/blue.png");
-        this.load.image("green","./assets/green.png");
         this.load.image("background","./assets/background.png");
         this.load.audio("music","./assets/game_music.ogg");
         
@@ -24,10 +24,13 @@ class game_screen extends Phaser.Scene{
 
         this.background = new Background();
         this.floor = this.createFloor();
-        this.player = this.createPlayer();
-        this.physics.add.collider(this.floor,this.player);
+        player = this.createPlayer();
+        this.physics.add.collider(this.floor,player);
         this.spawnObstacle();
         this.colorPicker = new ColorPicker();
+
+        this.scene.launch("HUD");
+        this.scene.bringToTop("HUD");
 
        
     }
@@ -51,6 +54,7 @@ class game_screen extends Phaser.Scene{
 
         this.floor.x-=delta/1000 * 15;
         this.floor.body.x-=delta/1000 * 15;
+        this.colorPicker.update();
     
     }
 
@@ -64,9 +68,6 @@ class game_screen extends Phaser.Scene{
 
     onEvent(){
         let obstacle = new Structure(this.physics.world,this);       
-            obstacle.getChildren().forEach(square => {
-                this.physics.add.collider(this.player,square);
-            });
         this.timedEvent.reset({delay: Phaser.Math.Between(500,750), callback: this.onEvent, callbackScope: this, repeat: 1});
     }
 }

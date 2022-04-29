@@ -6,8 +6,8 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
        
         this.x = config.width;
         this.speed=150;
-        this.initialTints = [0x960B0B,0x2E7A1E,0x000008B] // red green blue
-        this.finalTints = [0xD12323,0x89DE32,0x0F52BA]
+        this.initialTints = [0x960B0B,0x2E7A1E,0x0F52BA] // red green blue
+        this.finalTints   = [0xD12323,0x89DE32,0x5DADE2]
         this.y = Phaser.Math.Between(75,config.height);
         this.generateStructure();   
         this.scene.add.existing(this);

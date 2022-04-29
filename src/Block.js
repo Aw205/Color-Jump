@@ -9,15 +9,18 @@ class Block extends Phaser.Physics.Arcade.Sprite{
         this.color = color;
         this.initialTint = initialTint;
         this.finalTint = finalTint;
-
         this.setTint(this.initialTint);
 
-        this.setScale(Block.LENGTH/this.width,Block.LENGTH/this.height);
-        this.setOrigin(0,1);
         this.scene.physics.add.existing(this);
-        this.setImmovable(true);
-        this.setFrictionX(0);
-        this.setVelocityX(-130);   
+
+        this.setScale(Block.LENGTH/this.width,Block.LENGTH/this.height)
+            .setOrigin(0,1)
+            .setImmovable(true)
+            .setFrictionX(0)
+            .setVelocityX(-130);   
+      
+        let collider = this.scene.physics.add.collider(this,player);
+        collider.collideCallback= this.onCollision;
 
         this.createTween();
 
@@ -33,9 +36,17 @@ class Block extends Phaser.Physics.Arcade.Sprite{
             this.setTint(this.initialTint);
         }
 
-        if(this.x<-100){
+        if(this.x<-50){
             this.destroy(true);
         }
+    }
+
+    onCollision(block){
+
+        if(block.color==ColorPicker.CURRENT_COLOR){
+            //console.log("here");
+        }
+
     }
 
     createTween(){
