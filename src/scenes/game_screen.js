@@ -22,7 +22,8 @@ class game_screen extends Phaser.Scene{
         this.sound.add("music");
         this.sound.play("music",{loop: true});
 
-        this.background = new Background();
+       this.background = new Background(this,0,0,16,12,"background");
+      
         this.floor = this.createFloor();
         player = this.createPlayer();
         this.physics.add.collider(this.floor,player);
@@ -31,7 +32,6 @@ class game_screen extends Phaser.Scene{
 
         this.scene.launch("HUD");
         this.scene.bringToTop("HUD");
-
        
     }
 

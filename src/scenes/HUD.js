@@ -6,7 +6,7 @@ class HUD extends Phaser.Scene{
 
     create(){
 
-        this.colors = [0x8B0000,0xA0E785,0x1E90FF];
+        this.colors = [0x8B0000,0x2E7A1E,0x1E90FF]; //red green blue
         this.timeElapsed=0;
         this.time.addEvent({delay: 1000,loop: true, callback: ()=> this.timeElapsed++});
         this.createColorIndicator();

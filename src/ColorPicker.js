@@ -23,7 +23,6 @@ class ColorPicker {
         while(ColorPicker.FUTURE_COLOR== ColorPicker.CURRENT_COLOR){
             ColorPicker.FUTURE_COLOR = Phaser.Math.Between(0,2);
         }
-        //this.scene.cameras.main.setBackgroundColor(this.colors[currentColor]);
         this.timedEvent.reset({delay: Phaser.Math.Between(2,7)*1000, callback: this.onEvent, callbackScope: this, repeat: 1});
     }
 }

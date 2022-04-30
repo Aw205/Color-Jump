@@ -1,20 +1,17 @@
-class Background {
+class Background extends Phaser.GameObjects.TileSprite {
 
-    constructor(){
+    constructor(scene,x,y,width,height,texture){
 
-        this.scene = game.scene.getScene("game_screen");
-    
-        this.bg = new Phaser.GameObjects.Image(this.scene,0,0,"background");
-        this.bg.displayHeight=game.config.height;
-        this.bg.displayWidth= game.config.width;
-        this.bg.setOrigin(0,0);
-        this.scene.add.existing(this.bg);
-
+        super(scene,x,y,width,height,texture);
+        this.setOrigin(0,0);
+        this.setDisplaySize(640,480);
+        this.scene.add.existing(this);
     }
 
-    update(){
-
-    }
-
+   preUpdate(){
+     
+       this.tilePositionX+=0.01;
+        
+   }
 
 }
