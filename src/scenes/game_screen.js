@@ -13,16 +13,15 @@ class game_screen extends Phaser.Scene{
         this.load.image("arrow","./assets/arrow.png");
         this.load.image("block","./assets/block.png");
         this.load.image("background","./assets/background.png");
-        this.load.audio("music","./assets/game_music.ogg");
+       
+        
         
     }
 
     create(){
 
-        this.sound.add("music");
-        this.sound.play("music",{loop: true});
-
-       this.background = new Background(this,0,0,16,12,"background");
+       
+        this.background = new Background(this,0,0,16,12,"background");
       
         this.floor = this.createFloor();
         player = this.createPlayer();

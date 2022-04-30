@@ -8,8 +8,7 @@ class Background extends Phaser.GameObjects.TileSprite {
         this.scene.add.existing(this);
     }
 
-   preUpdate(){
-     
+   preUpdate(){   
        this.tilePositionX+=0.01;
         
    }

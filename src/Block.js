@@ -6,6 +6,7 @@ class Block extends Phaser.Physics.Arcade.Sprite{
     constructor(scene,x,y,texture,initialTint,finalTint,color){
 
         super(scene,x,y,texture); 
+
         this.color = color;
         this.initialTint = initialTint;
         this.finalTint = finalTint;
@@ -21,6 +22,8 @@ class Block extends Phaser.Physics.Arcade.Sprite{
       
         let collider = this.scene.physics.add.collider(this,player);
         collider.collideCallback= this.onCollision;
+        collider.processCallback
+        collider.callbackContext=this;
 
         this.createTween();
 
@@ -35,7 +38,6 @@ class Block extends Phaser.Physics.Arcade.Sprite{
             this.tween.pause();
             this.setTint(this.initialTint);
         }
-
         if(this.x<-50){
             this.destroy(true);
         }
@@ -44,9 +46,14 @@ class Block extends Phaser.Physics.Arcade.Sprite{
     onCollision(block){
 
         if(block.color==ColorPicker.CURRENT_COLOR){
-            //console.log("here");
-        }
 
+            window.player.disableBody(); // prevent additional collisions from triggering
+            this.scene.cameras.main.fadeOut(1000);    
+            this.scene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {  
+                game.scene.stop("HUD");
+                game.scene.start("death_screen");
+            });
+        }
     }
 
     createTween(){
