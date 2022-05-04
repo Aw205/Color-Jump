@@ -7,7 +7,7 @@ class ColorPicker {
 
     constructor(){       
         this.scene = game.scene.getScene("game_screen");
-        game.scene.getScene("game_screen").cameras.main.setBackgroundColor("84D8E7");
+        //game.scene.getScene("game_screen").cameras.main.setBackgroundColor("84D8E7");
         this.timedEvent = this.scene.time.addEvent({delay: 1000, callback: this.onEvent, callbackScope: this});
     }
 
@@ -23,6 +23,6 @@ class ColorPicker {
         while(ColorPicker.FUTURE_COLOR== ColorPicker.CURRENT_COLOR){
             ColorPicker.FUTURE_COLOR = Phaser.Math.Between(0,2);
         }
-        this.timedEvent.reset({delay: Phaser.Math.Between(2,7)*1000, callback: this.onEvent, callbackScope: this, repeat: 1});
+        this.timedEvent.reset({delay: Phaser.Math.Between(5,10)*1000, callback: this.onEvent, callbackScope: this, repeat: 1});
     }
 }

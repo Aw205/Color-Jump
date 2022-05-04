@@ -5,14 +5,14 @@ class Tutorial extends Phaser.Scene{
     }
 
     preload(){
-
+        this.load.image("tutorial_background","./assets/tutorial.png");
 
     }
 
     create(){
 
-        this.add.text(game.config.width/2,50,"Use left click to JUMP").setOrigin(0.5);
-        this.add.text(game.config.width/2,100,"Avoid blocks with same color as the indicator").setOrigin(0.5);
+        let background =  this.add.image(game.config.width/2,game.config.height/2,"tutorial_background");
+        const returnButton = new TextButton(this,game.config.width/2,450,"Return to Menu",{fontSize: 30},()=> this.scene.start("Menu")).setOrigin(0.5);
 
     }
 

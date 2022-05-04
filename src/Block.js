@@ -12,6 +12,8 @@ class Block extends Phaser.Physics.Arcade.Sprite{
         this.finalTint = finalTint;
         this.setTint(this.initialTint);
 
+        this.speed = 130;
+
         this.scene.physics.add.existing(this);
 
         this.setScale(Block.LENGTH/this.width,Block.LENGTH/this.height)
@@ -22,7 +24,6 @@ class Block extends Phaser.Physics.Arcade.Sprite{
       
         let collider = this.scene.physics.add.collider(this,player);
         collider.collideCallback= this.onCollision;
-        collider.processCallback
         collider.callbackContext=this;
 
         this.createTween();
