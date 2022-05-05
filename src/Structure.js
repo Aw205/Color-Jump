@@ -21,7 +21,6 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
         let interval = [Phaser.Math.Between(50,config.height/2),Phaser.Math.Between(config.height/2+50,config.height)];
         let num = Phaser.Math.Between(0,8);
        
-
         for(var i = 0; i< interval.length;i++){
             this.y = interval[i];
             let currentColor = Phaser.Math.Between(0,2);
@@ -41,7 +40,7 @@ class Structure extends Phaser.Physics.Arcade.StaticGroup{
 
     preUpdate(time,delta){
 
-        let increment = delta/1000 * this.speed;
+        //let increment = delta/1000 * this.speed;
         //this.incX(-increment);
     }
 

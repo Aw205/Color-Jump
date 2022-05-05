@@ -9,23 +9,32 @@ class game_screen extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("player","./assets/ball.png");
+        this.load.atlas("rolling","./assets/spritesheet.png","./assets/spritesheet.json");
         this.load.image("arrow","./assets/arrow.png");
         this.load.image("block","./assets/block.png");
         this.load.image("background","./assets/background.png");
-       
-        
+        this.load.audio("player_death","./assets/audio/player_death.wav");
         
     }
 
     create(){
 
-       
+        this.anims.create({
+            key: "roll",
+            frames: this.anims.generateFrameNames("rolling",{
+                prefix: "smile",
+                end:4   
+            }),
+            frameRate: 12,
+            repeat: -1
+        });
+ 
         this.background = new Background(this,0,0,16,12,"background");
       
         this.floor = this.createFloor();
-        player = this.createPlayer();
-        this.physics.add.collider(this.floor,player);
+        player =  new Player(this,200,config.height/2 - 100,'rolling',0);
+        this.physics.add.collider(this.floor,player.sprite);
+        
         this.spawnObstacle();
         this.colorPicker = new ColorPicker();
 
@@ -36,13 +45,12 @@ class game_screen extends Phaser.Scene{
 
     createFloor(){
 
-
         let line= new Phaser.GameObjects.Line(this);
-        line.setTo(0,config.height/2,200,config.height/2);
-        line.setStrokeStyle(5,Phaser.Display.Color.GetColor(255,0,0));
-        line.setOrigin(0,-1);
-        line.height=config.height/2;
-        line.width=200;
+        line.setTo(0,config.height/2,300,config.height/2)
+            .setStrokeStyle(5,Phaser.Display.Color.GetColor(255,0,0))
+            .setOrigin(0,-1);
+        line.height=config.height/2
+        line.width=300;
         this.physics.add.existing(line,true);
         this.add.existing(line);
        
@@ -51,14 +59,10 @@ class game_screen extends Phaser.Scene{
 
     update(time,delta){
 
-        this.floor.x-=delta/1000 * 15;
-        this.floor.body.x-=delta/1000 * 15;
+        this.floor.x-=delta/1000 * 35;
+        this.floor.body.x-=delta/1000 * 35;
         this.colorPicker.update();
     
-    }
-
-    createPlayer(){
-        return new Player(this,200,config.height/2 - 100,'player');
     }
 
     spawnObstacle(){

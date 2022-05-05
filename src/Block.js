@@ -13,7 +13,6 @@ class Block extends Phaser.Physics.Arcade.Sprite{
         this.setTint(this.initialTint);
 
         this.speed = 130;
-
         this.scene.physics.add.existing(this);
 
         this.setScale(Block.LENGTH/this.width,Block.LENGTH/this.height)
@@ -22,7 +21,7 @@ class Block extends Phaser.Physics.Arcade.Sprite{
             .setFrictionX(0)
             .setVelocityX(-130);   
       
-        let collider = this.scene.physics.add.collider(this,player);
+        let collider = this.scene.physics.add.collider(this,player.sprite);
         collider.collideCallback= this.onCollision;
         collider.callbackContext=this;
 
@@ -47,8 +46,9 @@ class Block extends Phaser.Physics.Arcade.Sprite{
     onCollision(block){
 
         if(block.color==ColorPicker.CURRENT_COLOR){
-
-            window.player.disableBody(); // prevent additional collisions from triggering
+            this.scene.sound.play("player_death");
+            window.player.sprite.disableBody(); // prevent additional collisions from triggering
+            window.player.sprite.setVisible(false);
             this.scene.cameras.main.fadeOut(1000);    
             this.scene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {  
                 game.scene.stop("HUD");

@@ -7,7 +7,6 @@ class ColorPicker {
 
     constructor(){       
         this.scene = game.scene.getScene("game_screen");
-        //game.scene.getScene("game_screen").cameras.main.setBackgroundColor("84D8E7");
         this.timedEvent = this.scene.time.addEvent({delay: 1000, callback: this.onEvent, callbackScope: this});
     }
 
