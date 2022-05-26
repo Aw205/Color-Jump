@@ -20,9 +20,10 @@ class Menu extends Phaser.Scene{
         }
         let background =  this.add.image(game.config.width/2,game.config.height/2,"menu_background");
         background.setScale(0.5,0.5);
-        
-        const startButton = new TextButton(this,game.config.width/2+25,250,"Start",{fontSize: 30},()=> this.scene.start("game_screen")).setOrigin(0.5);
-        const tutorialButton = new TextButton(this,game.config.width/2+25,350,"How To Play",{fontSize: 30},()=> this.scene.start("Tutorial")).setOrigin(0.5);
+        const startButton = new TextButton(this,game.config.width/2+25,250,"Start",{fontSize: 30},()=> this.scene.switch("game_screen")).setOrigin(0.5);
+        const tutorialButton = new TextButton(this,game.config.width/2+25,350,"How To Play",{fontSize: 30},()=> this.scene.switch("Tutorial")).setOrigin(0.5);
+
+        this.scene.bringToTop("Menu");
         
     }
 }

@@ -16,10 +16,8 @@ class death_screen extends Phaser.Scene{
         this.add.text(game.config.width/2,110,"You died").setOrigin(0.5).setFontSize(30).setColor("#FF0000");
         this.add.text(game.config.width/2,160,"Score: " + score).setOrigin(0.5).setFontSize(30).setColor("#FFFF00");
 
-        const restartButton = new TextButton(this,game.config.width/2-10,210,"Restart",{fontSize: 30},()=> this.scene.start("game_screen")).setOrigin(0.5);
-        const menuButton = new TextButton(this,game.config.width/2-10,260,"Menu",{fontSize: 30},()=> this.scene.start("Menu")).setOrigin(0.5);
+        const restartButton = new TextButton(this,game.config.width/2-10,210,"Restart",{fontSize: 30},()=> this.scene.switch("game_screen")).setOrigin(0.5);
+        const menuButton = new TextButton(this,game.config.width/2-10,260,"Menu",{fontSize: 30},()=> this.scene.switch("Menu")).setOrigin(0.5);
 
     }
-
-
 }
