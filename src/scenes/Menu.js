@@ -25,5 +25,4 @@ class Menu extends Phaser.Scene{
         const tutorialButton = new TextButton(this,game.config.width/2+25,350,"How To Play",{fontSize: 30},()=> this.scene.start("Tutorial")).setOrigin(0.5);
         
     }
-
 }

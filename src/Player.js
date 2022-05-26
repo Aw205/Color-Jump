@@ -9,6 +9,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.sprite.setGravityY(800);
         this.isDead=false;
         this.sprite.setScale(25/this.width,25/this.height);
+        this.sprite.setCollideWorldBounds(true);
         
         this.scene.input.on("pointerdown",this.jump,this);
         this.scene.add.existing(this);
@@ -32,7 +33,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     }
 
     checkForBounds(){ //duplicate code of what was in block need to reorganize
-        if(!this.isDead && this.sprite.x<0){
+        if(!this.isDead && (this.sprite.x<0 || this.sprite.y>480)){
             this.isDead=true;
             this.scene.sound.play("player_death");
             this.sprite.disableBody(); // prevent additional collisions from triggering

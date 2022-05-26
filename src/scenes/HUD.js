@@ -1,3 +1,5 @@
+var score = 0;
+
 class HUD extends Phaser.Scene{
 
     constructor(){
@@ -40,6 +42,7 @@ class HUD extends Phaser.Scene{
         this.futureColor.setTintFill(this.colors[ColorPicker.FUTURE_COLOR]);
 
         this.scoreText.setText("Score: " + this.timeElapsed);
+        score= this.timeElapsed;
         this.timeText.setText("Time left: " + ColorPicker.timer_progress.toFixed(1));
         
     }

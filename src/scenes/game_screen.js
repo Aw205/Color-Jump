@@ -30,6 +30,7 @@ class game_screen extends Phaser.Scene{
         });
  
         this.background = new Background(this,0,0,16,12,"background");
+        this.physics.world.setBoundsCollision(false,false,true,false);
       
         this.floor = this.createFloor();
         player =  new Player(this,200,config.height/2 - 100,'rolling',0);
